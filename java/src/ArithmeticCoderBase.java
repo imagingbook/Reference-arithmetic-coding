@@ -124,6 +124,9 @@ public abstract class ArithmeticCoderBase {
 		if (range < minimumRange || range > fullRange)
 			throw new AssertionError("Range out of range");
 		
+		//System.out.format("%64d %64d\n", low, high); // wilbur
+		System.out.format("%.20f %.20f\n", (double)low/stateMask, (double)high/stateMask); // wilbur 
+		
 		// Frequency table values check
 		long total = freqs.getTotal();
 		long symLow = freqs.getLow(symbol);
@@ -138,6 +141,7 @@ public abstract class ArithmeticCoderBase {
 		long newHigh = low + symHigh * range / total - 1;
 		low = newLow;
 		high = newHigh;
+		
 		
 		// While low and high have the same top bit value, shift them out
 		while (((low ^ high) & halfRange) == 0) {
