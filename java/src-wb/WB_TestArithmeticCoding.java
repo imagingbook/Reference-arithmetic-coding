@@ -12,6 +12,8 @@ public class WB_TestArithmeticCoding {
 
 	static byte[] compress(byte[] b) { //  throws IOException 
 		FrequencyTable freqs = makeFrequencyTable(b);
+		System.out.println("FrequencyTable is of type " + freqs.getClass().getName());
+		list(freqs);
 		
 		InputStream in = new ByteArrayInputStream(b);
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -23,6 +25,8 @@ public class WB_TestArithmeticCoding {
 		}
 		return out.toByteArray();
 	}
+	
+	// ------------
 	
 	static byte[] compress(char[] c) { //  throws IOException 
 		FrequencyTable freqs = makeFrequencyTable(c);
@@ -86,6 +90,15 @@ public class WB_TestArithmeticCoding {
 		return a;
 	}
 	
+	private static void list(FrequencyTable freqs) {
+		System.out.println("Listing FrequencyTable:");
+		int n = freqs.getSymbolLimit();
+		System.out.println("SymbolLimit = " + freqs.getSymbolLimit());
+		for (int i = 0; i < n; i++) {
+			System.out.format("   %3d: f=%3d  Low=%3d  High=%3d\n", i, freqs.get(i), freqs.getLow(i), freqs.getHigh(i));
+		}
+	}
+	
 	// -------------------------------------------------------------------------
 	
 	public static void main(String[] args) {
@@ -94,21 +107,23 @@ public class WB_TestArithmeticCoding {
 //		byte[] original = {0,3,3,3,3,3,3,3,3,3,3};
 //		byte[] original = makeRandom(1000000);
 		
-//		System.out.println("original = " + Arrays.toString(original));
-//		System.out.println("original length = " + original.length + " (bytes)");
-//		
-//		byte[] compressed = compress(original);
-//		System.out.println("compressed = " + Arrays.toString(compressed));
-//		System.out.println("compressed length = " + compressed.length + " (bytes)");
-//		
-//		byte[] restored = decompress(compressed);
-//		System.out.println("restored = " + Arrays.toString(restored));
-//		System.out.println("restored length = " + restored.length + " (bytes)");
+		System.out.println("original = " + Arrays.toString(original));
+		System.out.println("original length = " + original.length + " (bytes)");
 		
-		char[] originalC = "32915328910A".toCharArray();
+		byte[] compressed = compress(original);
+		System.out.println("compressed = " + Arrays.toString(compressed));
+		System.out.println("compressed length = " + compressed.length + " (bytes)");
 		
-		System.out.println("originalC = " + Arrays.toString(originalC));
-		byte[] compressedC = compress(originalC);
+		byte[] restored = decompress(compressed);
+		System.out.println("restored = " + Arrays.toString(restored));
+		System.out.println("restored length = " + restored.length + " (bytes)");
+
+		
+		// testing char[]
+//		char[] originalC = "32915328910A".toCharArray();
+//		
+//		System.out.println("originalC = " + Arrays.toString(originalC));
+//		byte[] compressedC = compress(originalC);
 		
 	}
 	
