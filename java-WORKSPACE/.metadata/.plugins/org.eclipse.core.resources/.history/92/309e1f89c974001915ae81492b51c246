@@ -1,0 +1,17 @@
+import java.io.IOException;
+
+public class ArithmeticCharCoder extends ArithmeticCoderBase {
+
+	@Override
+	protected void shift() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void underflow() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

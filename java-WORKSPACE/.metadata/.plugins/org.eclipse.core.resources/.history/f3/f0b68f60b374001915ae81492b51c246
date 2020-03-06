@@ -1,0 +1,18 @@
+
+
+/**
+ * 
+ * @author WB
+ *
+ */
+public class ArithmeticCharEncoding {
+	
+	private final int[] frequencies;
+	
+	public ArithmeticCharEncoding(char[] text) {
+		frequencies = null;
+	}
+	
+	
+
+}

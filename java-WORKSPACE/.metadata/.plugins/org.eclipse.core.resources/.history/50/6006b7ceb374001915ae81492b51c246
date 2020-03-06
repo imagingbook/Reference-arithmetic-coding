@@ -1,0 +1,28 @@
+
+
+/**
+ * 
+ * @author WB
+ *
+ */
+public class ArithmeticCharEncoding {
+	
+	private final int[] frequencies;
+	private final FrequencyTable ft;
+	
+	public ArithmeticCharEncoding(char[] text) {
+		frequencies = makeFrequencies(text);
+		ft = new SimpleFrequencyTable(frequencies);
+	}
+	
+	
+	private int[] makeFrequencies(char[] text) {
+		int[] freqs = new int[Character.MAX_VALUE];
+		for (char c : text) {
+			freqs[c]++;
+		}
+		return freqs;
+	}
+	
+
+}

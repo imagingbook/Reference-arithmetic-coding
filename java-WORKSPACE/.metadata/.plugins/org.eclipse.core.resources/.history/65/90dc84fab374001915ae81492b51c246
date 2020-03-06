@@ -1,0 +1,37 @@
+
+
+/**
+ * 
+ * @author WB
+ *
+ */
+public class ArithmeticCharEncoding {
+	
+	private final int[] frequencies;
+	private final FrequencyTable ft;
+	
+	public ArithmeticCharEncoding(char[] text) {
+		frequencies = makeFrequencies(text);
+		ft = new SimpleFrequencyTable(frequencies);
+		System.out.println(ft.toString());
+
+	}
+	
+	public ArithmeticCharEncoding(String text) {
+		this(text.toCharArray());
+	}
+	
+	private int[] makeFrequencies(char[] text) {
+		int[] freqs = new int[Character.MAX_VALUE];
+		for (char c : text) {
+			freqs[c]++;
+		}
+		return freqs;
+	}
+	
+	public static void main(String[] args) {
+		ArithmeticCharEncoding encoding = new ArithmeticCharEncoding("Lieber Onkel Peppi");
+	}
+	
+
+}
